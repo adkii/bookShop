@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="bookShopPro:war">
+    <output-path>$PROJECT_DIR$/bookShopPro/target</output-path>
+    <root id="archive" name="springMvcFinal.war">
+      <element id="artifact" artifact-name="bookShopPro:war exploded" />
+    </root>
+  </artifact>
+</component>
