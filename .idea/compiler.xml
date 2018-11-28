@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bookShop" />
         <module name="bookShopPro" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bookShop" target="1.5" />
       <module name="bookShopPro" target="1.5" />
     </bytecodeTargetLevel>
   </component>

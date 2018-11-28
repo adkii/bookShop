@@ -1,17 +1,15 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="bookShopPro:war exploded">
-    <output-path>$PROJECT_DIR$/bookShopPro/target/springMvcFinal</output-path>
+  <artifact type="exploded-war" name="bookShop:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/bookShop_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="bookShopPro" />
+          <element id="module-output" name="bookShop" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.2" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.18.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.9" />
@@ -57,10 +55,7 @@
           <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/bookShopPro/target/springMvcFinal/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="bookShopPro/web/Web" />
+      <element id="javaee-facet-resources" facet="bookShop/web/Web" />
     </root>
   </artifact>
 </component>
