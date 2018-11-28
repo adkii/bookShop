@@ -1,5 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -53,11 +57,11 @@
     <div class="row">
         <div class="col-md-4">
             <!-- Start Sign In Form -->
-            <form action="#" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+            <form action="${pageContext.request.contextPath}/login" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
                 <h2>Sign In</h2>
                 <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
-                    <input type="text" name="loginname" class="form-control" id="username" placeholder="Username" autocomplete="off">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="password" class="sr-only">Password</label>

@@ -160,16 +160,21 @@
             <artifactId>mybatis-generator-maven-plugin</artifactId>
             <version>1.3.7</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>commons-dbcp</groupId>-->
+            <!--<artifactId>commons-dbcp</artifactId>-->
+            <!--<version>1.2.1</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>xercesImpl</artifactId>-->
+                    <!--<groupId>xerces</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.2.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>xercesImpl</artifactId>
-                    <groupId>xerces</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.0</version>
         </dependency>
     </dependencies>
 
@@ -213,7 +218,7 @@
                     <version>1.3.2</version>
                     <configuration>
                         <!--配置文件的位置-->
-                        <configurationFile>src\main\resources\db\generatorConfig.xml</configurationFile>
+                        <configurationFile>src\main\resources\generatorConfig.xml</configurationFile>
                         <verbose>true</verbose>
                         <overwrite>true</overwrite>
                     </configuration>

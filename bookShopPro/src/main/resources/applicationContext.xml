@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+       xmlns:Context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.ogr/schema/tx/spring-tx.xsd">
+    <Context:component-scan base-package="org.mld.*"/>
+    <Context:property-placeholder location="classpath:db.properties"/>
+    <bean name="datasource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="url" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="username" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+    </bean>
+    <bean name="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <!--核心配置文件的位置-->
+        <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+    </bean>
+    <!--动态代理增强版 mapper动态代理扫描版-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定基本包-->
+        <property name="basePackage" value="org.mld.mapper"/>
+    </bean>
+    <!--配置事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+    <!--注解-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 </beans>

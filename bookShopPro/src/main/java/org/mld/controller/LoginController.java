@@ -16,4 +16,7 @@ public class LoginController {
             return "redirect:login/login";
         }
     }
+    public String login(String username,String password){
+        return "";
+    }
 }

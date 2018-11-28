@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.mld.mapper.ApplogMapper" >
+  <resultMap id="BaseResultMap" type="org.mld.po.Applog" >
+    <id column="log_id" property="logId" jdbcType="BIGINT" />
+    <result column="log_module" property="logModule" jdbcType="VARCHAR" />
+    <result column="log_time" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="log_ip" property="logIp" jdbcType="VARCHAR" />
+    <result column="log_note" property="logNote" jdbcType="VARCHAR" />
+    <result column="log_status" property="logStatus" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    log_id, log_module, log_time, log_ip, log_note, log_status, user_id, user_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.mld.po.ApplogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from applog
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from applog
+    where log_id = #{logId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from applog
+    where log_id = #{logId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mld.po.ApplogExample" >
+    delete from applog
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mld.po.Applog" >
+    insert into applog (log_id, log_module, log_time, 
+      log_ip, log_note, log_status, 
+      user_id, user_name)
+    values (#{logId,jdbcType=BIGINT}, #{logModule,jdbcType=VARCHAR}, #{logTime,jdbcType=TIMESTAMP}, 
+      #{logIp,jdbcType=VARCHAR}, #{logNote,jdbcType=VARCHAR}, #{logStatus,jdbcType=CHAR}, 
+      #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.mld.po.Applog" >
+    insert into applog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        log_id,
+      </if>
+      <if test="logModule != null" >
+        log_module,
+      </if>
+      <if test="logTime != null" >
+        log_time,
+      </if>
+      <if test="logIp != null" >
+        log_ip,
+      </if>
+      <if test="logNote != null" >
+        log_note,
+      </if>
+      <if test="logStatus != null" >
+        log_status,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=BIGINT},
+      </if>
+      <if test="logModule != null" >
+        #{logModule,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null" >
+        #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logIp != null" >
+        #{logIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logNote != null" >
+        #{logNote,jdbcType=VARCHAR},
+      </if>
+      <if test="logStatus != null" >
+        #{logStatus,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mld.po.ApplogExample" resultType="java.lang.Integer" >
+    select count(*) from applog
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update applog
+    <set >
+      <if test="record.logId != null" >
+        log_id = #{record.logId,jdbcType=BIGINT},
+      </if>
+      <if test="record.logModule != null" >
+        log_module = #{record.logModule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logTime != null" >
+        log_time = #{record.logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logIp != null" >
+        log_ip = #{record.logIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logNote != null" >
+        log_note = #{record.logNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logStatus != null" >
+        log_status = #{record.logStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update applog
+    set log_id = #{record.logId,jdbcType=BIGINT},
+      log_module = #{record.logModule,jdbcType=VARCHAR},
+      log_time = #{record.logTime,jdbcType=TIMESTAMP},
+      log_ip = #{record.logIp,jdbcType=VARCHAR},
+      log_note = #{record.logNote,jdbcType=VARCHAR},
+      log_status = #{record.logStatus,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mld.po.Applog" >
+    update applog
+    <set >
+      <if test="logModule != null" >
+        log_module = #{logModule,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null" >
+        log_time = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logIp != null" >
+        log_ip = #{logIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logNote != null" >
+        log_note = #{logNote,jdbcType=VARCHAR},
+      </if>
+      <if test="logStatus != null" >
+        log_status = #{logStatus,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mld.po.Applog" >
+    update applog
+    set log_module = #{logModule,jdbcType=VARCHAR},
+      log_time = #{logTime,jdbcType=TIMESTAMP},
+      log_ip = #{logIp,jdbcType=VARCHAR},
+      log_note = #{logNote,jdbcType=VARCHAR},
+      log_status = #{logStatus,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=BIGINT}
+  </update>
+</mapper>
