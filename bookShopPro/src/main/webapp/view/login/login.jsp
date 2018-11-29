@@ -31,13 +31,13 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="/include/login/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/include/login/css/animate.css">
-    <link rel="stylesheet" href="/include/login/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/login/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/login/css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/login/css/style.css">
 
 
     <!-- Modernizr JS -->
-    <script src="/include/login/js/modernizr-2.6.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/include/login/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="/include/login/js/respond.min.js"></script>
@@ -87,15 +87,15 @@
 </div>
 
 <!-- jQuery -->
-<script src="/include/login/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/include/login/js/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="/include/login/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/include/login/js/bootstrap.min.js"></script>
 <!-- Placeholder -->
-<script src="/include/login/js/jquery.placeholder.min.js"></script>
+<script src="${pageContext.request.contextPath}/include/login/js/jquery.placeholder.min.js"></script>
 <!-- Waypoints -->
-<script src="/include/login/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/include/login/js/jquery.waypoints.min.js"></script>
 <!-- Main JS -->
-<script src="/include/login/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/include/login/js/main.js"></script>
 
 </body>
 </html>

@@ -288,4 +288,10 @@
       is_valid = #{isValid,jdbcType=BIT}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  <!--根据登录名查询用户-->
+  <select id="findUserByLName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from appuser where is login_name=#{loginName}
+  </select>
 </mapper>

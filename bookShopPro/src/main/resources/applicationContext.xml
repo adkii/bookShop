@@ -10,17 +10,20 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.ogr/schema/tx/spring-tx.xsd">
     <Context:component-scan base-package="org.mld.*"/>
-    <Context:property-placeholder location="classpath:db.properties"/>
-    <bean name="datasource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="url" value="${jdbc.jdbcUrl}"></property>
-        <property name="driverClassName" value="${jdbc.driverClass}"></property>
-        <property name="username" value="${jdbc.user}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-        <property name="maxActive" value="10"/>
-        <property name="maxIdle" value="5"/>
+    <Context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <!--驱动类名 -->
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <!-- url -->
+        <property name="url" value="${jdbc.url}" />
+        <!-- 用户名 -->
+        <property name="username" value="${jdbc.username}" />
+        <!-- 密码 -->
+        <property name="password" value="${jdbc.password}" />
     </bean>
     <bean name="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="datasource"/>
+        <property name="dataSource" ref="dataSource"/>
         <!--核心配置文件的位置-->
         <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
     </bean>
@@ -31,7 +34,7 @@
     </bean>
     <!--配置事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="datasource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--注解-->
     <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->

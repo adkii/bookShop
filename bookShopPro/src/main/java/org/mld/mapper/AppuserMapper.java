@@ -27,4 +27,5 @@ public interface AppuserMapper {
     int updateByPrimaryKeySelective(Appuser record);
 
     int updateByPrimaryKey(Appuser record);
+    Appuser findUserByLName(String loginName);
 }

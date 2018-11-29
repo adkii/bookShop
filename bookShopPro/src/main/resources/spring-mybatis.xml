@@ -48,7 +48,7 @@
     <!-- 5.配置扫描器  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描com.demo.dao这个包以及它的子包下的所有映射接口类 -->
-        <property name="basePackage" value="com.demo.dao" />
+        <property name="basePackage" value="org.mld.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
@@ -74,7 +74,6 @@
             <tx:method name="delete*" propagation="REQUIRED" />
             <tx:method name="remove*" propagation="REQUIRED" />
             <tx:method name="repair" propagation="REQUIRED" />
-
             <tx:method name="get*" propagation="REQUIRED"  />
             <tx:method name="find*" propagation="REQUIRED" read-only="true" />
             <tx:method name="load*" propagation="REQUIRED" read-only="true" />
@@ -87,7 +86,7 @@
 
     <!-- 配置aop  -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.demo.service..*Impl.*(..))" />
+        <aop:pointcut id="transactionPointcut" expression="execution(* org.mld.services..*Impl.*(..))" />
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
     </aop:config>
 
