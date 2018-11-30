@@ -32,6 +32,8 @@ public class LoginController {
         Appuser appuser=appuserService.checkLogin(loginName,password);
         if(appuser!=null){
             session.setAttribute("appuser",appuser);
+            //获取当前用户菜单
+
             return "redirect:/loginSuccess";
         }else{
             model.addAttribute("msg","用户名或密码错误");

@@ -8,8 +8,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
+    <title>图书商城管理系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/layui/css/layui.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/css/index.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -43,33 +44,47 @@
             <li class="layui-nav-item"><a href="">退了</a></li>
         </ul>
     </div>
-
+    <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
+        <div class="user-photo">
+            <a class="img" title="我的头像" ><img src="${pageContext.request.contextPath}/include/Scripts/image/face.jpg" class="userAvatar"></a>
+            <p>你好！<span class="userName">驊驊龔頾</span>, 欢迎登录</p>
+        </div>
+        <!--左侧菜单-->
+        <div class="navBar layui-side-scroll" id="navBar">
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" data-url="page/main.html"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
         </div>
     </div>
+    <%--<div class="layui-side layui-bg-black">--%>
+        <%--<div class="layui-side-scroll">--%>
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <%--<ul class="layui-nav layui-nav-tree"  lay-filter="test">--%>
+                <%--<li class="layui-nav-item layui-nav-itemed">--%>
+                    <%--<a class="" href="javascript:;">所有商品</a>--%>
+                    <%--<dl class="layui-nav-child">--%>
+                        <%--<dd><a href="javascript:;">列表一</a></dd>--%>
+                        <%--<dd><a href="javascript:;">列表二</a></dd>--%>
+                        <%--<dd><a href="javascript:;">列表三</a></dd>--%>
+                        <%--<dd><a href="">超链接</a></dd>--%>
+                    <%--</dl>--%>
+                <%--</li>--%>
+                <%--<li class="layui-nav-item">--%>
+                    <%--<a href="javascript:;">解决方案</a>--%>
+                    <%--<dl class="layui-nav-child">--%>
+                        <%--<dd><a href="javascript:;">列表一</a></dd>--%>
+                        <%--<dd><a href="javascript:;">列表二</a></dd>--%>
+                        <%--<dd><a href="">超链接</a></dd>--%>
+                    <%--</dl>--%>
+                <%--</li>--%>
+                <%--<li class="layui-nav-item"><a href="">云市场</a></li>--%>
+                <%--<li class="layui-nav-item"><a href="">发布商品</a></li>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
@@ -82,6 +97,7 @@
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js"></script>
+<script src="${pageContext.request.contextPath}/include/Scripts/index.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
