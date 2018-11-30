@@ -40,7 +40,7 @@
     <script src="${pageContext.request.contextPath}/include/login/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-    <script src="/include/login/js/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/include/login/js/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -57,11 +57,11 @@
     <div class="row">
         <div class="col-md-4">
             <!-- Start Sign In Form -->
-            <form action="${pageContext.request.contextPath}/login" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+            <form action="${pageContext.request.contextPath}/checkLogin" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
                 <h2>Sign In</h2>
                 <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
-                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" autocomplete="off">
+                    <input type="text" name="loginName" class="form-control" id="username" placeholder="Username" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="password" class="sr-only">Password</label>
@@ -87,7 +87,7 @@
 </div>
 
 <!-- jQuery -->
-<script src="${pageContext.request.contextPath}/include/login/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/include/Scripts/jquery-1.9.1.min.js"></script>
 <!-- Bootstrap -->
 <script src="${pageContext.request.contextPath}/include/login/js/bootstrap.min.js"></script>
 <!-- Placeholder -->
@@ -96,7 +96,14 @@
 <script src="${pageContext.request.contextPath}/include/login/js/jquery.waypoints.min.js"></script>
 <!-- Main JS -->
 <script src="${pageContext.request.contextPath}/include/login/js/main.js"></script>
-
+<script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js" type="text/javascript"/>
+<script type="text/javascript">
+    $(function () {
+      if('${msg}'!='null' && '${msg}'!=''){
+          alert(msg);
+      }
+    })
+</script>
 </body>
 </html>
 

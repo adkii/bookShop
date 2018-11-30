@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,13 +24,22 @@ public class LoginController {
         }
     }
     @RequestMapping(value = "/login")
-    public String login(String username,String password,HttpSession session){
-        Appuser appuser=appuserService.checkLogin(username,password);
-       if(appuser!=null){
-           session.setAttribute("user",appuser);
-          return "login/index";
-       }else{
-           return "login/login";
-       }
+    public String login(){
+        return "login/login";
+    }
+    @RequestMapping(value = "/checkLogin")
+    public String checkLogin(String loginName, String password, HttpSession session, Model model){
+        Appuser appuser=appuserService.checkLogin(loginName,password);
+        if(appuser!=null){
+            session.setAttribute("appuser",appuser);
+            return "redirect:/loginSuccess";
+        }else{
+            model.addAttribute("msg","用户名或密码错误");
+            return "redirect:/login";
+        }
+    }
+    @RequestMapping(value = "/loginSuccess")
+    public String loginSuccess(){
+        return "login/index";
     }
 }

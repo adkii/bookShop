@@ -75,10 +75,10 @@
     user_id, login_name, user_name, password, info_id, login_count, login_time, creator_id, 
     create_time, is_valid
   </sql>
-  <!--根据登录名查询用户-->
-  <select id="findUserByLName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <!--通过登录名查找用户-->
+  <select id="findUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from appuser where is login_name=#{loginName}
+    from appuser where login_name=#{loginName}
   </select>
 </mapper>

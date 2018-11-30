@@ -1,6 +1,5 @@
 package org.mld.services.serviceImpl;
 
-import org.apache.ibatis.annotations.Select;
 import org.mld.mapper.AppuserMapper;
 import org.mld.mapper.AppuserMapperSelf;
 import org.mld.po.Appuser;
@@ -14,15 +13,15 @@ public class AppuserServiceImpl implements AppuserService {
     @Autowired
     private AppuserMapperSelf appuserMapperSelf;
     public Appuser checkLogin(String loginName,String password) {
-        Appuser appuser=appuserMapperSelf.findUserByLName(loginName);
+        Appuser appuser=appuserMapperSelf.findUserByName(loginName);
         if(appuser!=null){
-            if(loginName.equals(appuser.getPassword())){
+            if(appuser.getPassword().equals(password)){
                 return appuser;
             }else{
                 return null;
             }
         }else{
-                return null;
+            return null;
         }
     }
 }
