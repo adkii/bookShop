@@ -1,11 +1,7 @@
 package org.mld.services.serviceImpl;
 
-import org.mld.mapper.AppmenuMapperSelf;
-import org.mld.mapper.AppuserMapper;
-import org.mld.mapper.AppuserMapperSelf;
-import org.mld.po.Appmenu;
-import org.mld.po.Appuser;
-import org.mld.po.AppuserExample;
+import org.mld.mapper.*;
+import org.mld.po.*;
 import org.mld.services.AppuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +11,17 @@ import java.util.List;
 @Service
 public class AppuserServiceImpl implements AppuserService {
     @Autowired
+    private  AppuserMapper appuserMapper;
+    @Autowired
     private AppuserMapperSelf appuserMapperSelf;
     @Autowired
     private AppmenuMapperSelf appmenuMapperSelf;
+    @Autowired
+    private AppuserRoleMapperSelf appuserRoleMapperSelf;
+    @Autowired
+    private AppmenuMapper appmenuMapper;
+    @Autowired
+    private ApproleMenuMapperSelf approleMenuMapperSelf;
     public Appuser checkLogin(String loginName,String password) {
         Appuser appuser=appuserMapperSelf.findUserByName(loginName);
         if(appuser!=null){
@@ -30,10 +34,21 @@ public class AppuserServiceImpl implements AppuserService {
             return null;
         }
     }
+    //查询菜单
+    public List<Appmenu> getMenuListByUser(Integer roleId,Integer parentId) {
+        List<Integer> menuIdList=approleMenuMapperSelf.selectMenuIdByRole(roleId);
+        AppmenuExample appmenuExample=new AppmenuExample();
+        appmenuExample.or().andMenuIdIn(menuIdList).andParentIdEqualTo(parentId);
+        List<Appmenu> appmenuList=appmenuMapper.selectByExample(appmenuExample);
+        return appmenuList;
+    }
+    //获取当前用户权限
+    public Integer getRole(Appuser appuser) {
+        return appuserRoleMapperSelf.selectRoleIdByU(appuser.getUserId());
+    }
 
-    public List<Appmenu> getMenuListByUser(Appuser appuser) {
-        //改到现在
-        appmenuMapperSelf.findMenuByRole(1);
+    public List<Appuser> getUserListPage() {
         return null;
     }
+
 }

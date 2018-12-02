@@ -7,6 +7,12 @@ import java.util.List;
 
 
 public interface AppuserService {
+     //验证登录
      Appuser checkLogin(String loginName,String password);
-     List<Appmenu> getMenuListByUser(Appuser appuser);
+     //根据权限查找用户菜单
+     List<Appmenu> getMenuListByUser(Integer roleId,Integer parentId);
+     //获取用户权限
+     Integer getRole(Appuser appuser);
+     //获取分页列表
+     List<Appuser> getUserListPage();
 }

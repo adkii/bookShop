@@ -22,7 +22,6 @@ public class Appuser {
     private Date createTime;
 
     private Boolean isValid;
-
     public Integer getUserId() {
         return userId;
     }

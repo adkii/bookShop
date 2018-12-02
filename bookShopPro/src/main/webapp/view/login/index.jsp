@@ -98,6 +98,7 @@
 </div>
 <script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js"></script>
 <script src="${pageContext.request.contextPath}/include/Scripts/index.js"></script>
+<script src="${pageContext.request.contextPath}/include/Scripts/cache.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){

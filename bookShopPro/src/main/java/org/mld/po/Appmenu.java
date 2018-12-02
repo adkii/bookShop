@@ -90,4 +90,19 @@ public class Appmenu {
     public void setIsValid(Boolean isValid) {
         this.isValid = isValid;
     }
+
+    @Override
+    public String toString() {
+        return "Appmenu{" +
+                "menuId=" + menuId +
+                ", menuName='" + menuName + '\'' +
+                ", parentId=" + parentId +
+                ", menuUrl='" + menuUrl + '\'' +
+                ", menuIcon='" + menuIcon + '\'' +
+                ", sortOrder=" + sortOrder +
+                ", isParent=" + isParent +
+                ", isHidden=" + isHidden +
+                ", isValid=" + isValid +
+                '}';
+    }
 }

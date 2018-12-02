@@ -1,6 +1,6 @@
 var $,tab,dataStr,layer;
 layui.config({
-	base : "js/"
+	base : "include/Scripts/"
 }).extend({
 	"bodyTab" : "bodyTab"
 })
@@ -11,30 +11,41 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
     	layer = parent.layer === undefined ? layui.layer : top.layer;
 		tab = layui.bodyTab({
 			openTabNum : "50",  //最大可打开窗口数量
-			url : "json/navs.json" //获取菜单json地址
+			url : "/getMenuList" //获取菜单json地址
+			//url:"json/navs.json"
 		});
 
 	//通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
 	function getData(json){
-		$.getJSON(tab.tabConfig.url,function(data){
-			if(json == "contentManagement"){
-				dataStr = data.contentManagement;
-				//重新渲染左侧菜单
-				tab.render();
-			}else if(json == "memberCenter"){
-				dataStr = data.memberCenter;
-				//重新渲染左侧菜单
-				tab.render();
-			}else if(json == "systemeSttings"){
-				dataStr = data.systemeSttings;
-				//重新渲染左侧菜单
-				tab.render();
-			}else if(json == "seraphApi"){
-                dataStr = data.seraphApi;
+		// $.getJSON(tab.tabConfig.url,function(data){
+		// 	if(json == "contentManagement"){
+		// 		dataStr = data.contentManagement;
+		// 		//重新渲染左侧菜单
+		// 		tab.render();
+		// 	}else if(json == "memberCenter"){
+		// 		dataStr = data.memberCenter;
+		// 		//重新渲染左侧菜单
+		// 		tab.render();
+		// 	}else if(json == "systemeSttings"){
+		// 		dataStr = data.systemeSttings;
+		// 		//重新渲染左侧菜单
+		// 		tab.render();
+		// 	}else if(json == "seraphApi"){
+         //        dataStr = data.seraphApi;
+         //        //重新渲染左侧菜单
+         //        tab.render();
+         //    }
+		// })
+		$.post(tab.tabConfig.url,{},function (d) {
+			if(d.success==1){
+                dataStr = d.data;
                 //重新渲染左侧菜单
                 tab.render();
-            }
-		})
+			}else{
+				layer.alert(d.error);
+			}
+
+        })
 	}
 	//页面加载时判断左侧菜单是否显示
 	//通过顶部菜单获取左侧菜单

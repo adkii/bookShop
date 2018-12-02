@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.mld.mapper.AppmenuMapperSelf" >
-  <resultMap id="BaseResultMap" type="org.mld.po.Appmenu" >
-    <id column="menu_id" property="menuId" jdbcType="INTEGER" />
-    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
-    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
-    <result column="menu_url" property="menuUrl" jdbcType="VARCHAR" />
-    <result column="menu_icon" property="menuIcon" jdbcType="VARCHAR" />
-    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
-    <result column="is_parent" property="isParent" jdbcType="BIT" />
-    <result column="is_hidden" property="isHidden" jdbcType="BIT" />
-    <result column="is_valid" property="isValid" jdbcType="BIT" />
+<mapper namespace="org.mld.mapper.AppuserRoleMapperSelf" >
+  <resultMap id="BaseResultMap" type="org.mld.po.AppuserRoleKey" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,13 +64,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    menu_id, menu_name, parent_id, menu_url, menu_icon, sort_order, is_parent, is_hidden, 
-    is_valid
+    user_id, role_id
   </sql>
-  <!--查询角色对应菜单-->
-  <select id="selectMenuByRole" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-      select
-      <include refid="Base_Column_List"/>
-      from appmenu where exists (select 1 from appuser_role where roleid=#{roleid})
+  <select id="selectRoleIdByU" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select role_id from appuser_role where user_id=#{userId}
   </select>
 </mapper>
