@@ -81,4 +81,13 @@
     <include refid="Base_Column_List" />
     from appuser where login_name=#{loginName}
   </select>
+  <!--查询用户列表-->
+  <select id="selectUserList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from appuser where 1=1
+    <if test="userName!=null and userName!=''">
+      and user_name like #{useName}
+    </if>
+  </select>
 </mapper>

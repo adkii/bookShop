@@ -27,19 +27,22 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-
         table.render({
-            elem: '#dataTable'
+             elem: '#dataTable'
             ,url:'${pageContext.request.contextPath}/user/userList'
             ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             ,cols: [[
-                 {field:'userId', title: '用户ID'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                  {field:'userId', title: '用户ID'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
                  ,{field:'loginName', title: '登录名'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
                  ,{field:'userName', title: '真实姓名'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
                  ,{field:'createTime', title: '创建时间', sort: true, align: 'right'}
                  ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
             ]]
             ,page: true
+            ,response: {
+                 countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'rows' //规定数据列表的字段名称，默认：data
+            }
         });
     });
 </script>

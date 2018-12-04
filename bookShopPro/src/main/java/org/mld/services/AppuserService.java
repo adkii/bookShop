@@ -1,5 +1,6 @@
 package org.mld.services;
 
+import com.github.pagehelper.PageInfo;
 import org.mld.po.Appmenu;
 import org.mld.po.Appuser;
 
@@ -14,5 +15,5 @@ public interface AppuserService {
      //获取用户权限
      Integer getRole(Appuser appuser);
      //获取分页列表
-     List<Appuser> getUserListPage();
+     PageInfo<Appuser> getUserListPage(String userName,Integer pageNo,Integer pageSize);
 }

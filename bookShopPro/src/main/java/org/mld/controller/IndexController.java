@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class IndexController {
-    public void index(){
-
+    @RequestMapping(value = "/toView")
+    public String index(String pindex){
+        return "/admin/"+pindex;
+    }
+    @RequestMapping(value = "/testUser")
+    public String indexTest(){
+        return "/admin/userList";
     }
 }

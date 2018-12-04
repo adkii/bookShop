@@ -1,5 +1,7 @@
 package org.mld.services.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.mld.mapper.*;
 import org.mld.po.*;
 import org.mld.services.AppuserService;
@@ -47,8 +49,14 @@ public class AppuserServiceImpl implements AppuserService {
         return appuserRoleMapperSelf.selectRoleIdByU(appuser.getUserId());
     }
 
-    public List<Appuser> getUserListPage() {
-        return null;
+    //分布查询用户
+    public PageInfo<Appuser> getUserListPage(String userName, Integer pageNo, Integer pageSize) {
+        pageNo = pageNo == null?1:pageNo;
+        pageSize = pageSize == null?10:pageSize;
+        PageHelper.startPage(pageNo, pageSize);
+        List<Appuser> list = appuserMapperSelf.selectUserList(userName);
+        //用PageInfo对结果进行包装
+        PageInfo<Appuser> page = new PageInfo<Appuser>(list);
+        return page;
     }
-
 }
