@@ -11,10 +11,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/css/public.css"  media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
-<body>
-
+<body class="childrenBody">
+<form class="layui-form" action="">
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input searchVal" autocomplete="false" placeholder="请输入搜索的内容" />
+        </div>
+        <a class="layui-btn search_btn" data-type="reload">搜索</a>
+    </div>
+</form>
 <table class="layui-hide" id="dataTable"></table>
 
 <script type="text/html" id="barDemo">
@@ -44,6 +52,30 @@
                 ,dataName: 'rows' //规定数据列表的字段名称，默认：data
             }
         });
+    });
+    //监听工具条
+    table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+        if(layEvent === 'detail'){ //查看
+            //do somehing
+        } else if(layEvent === 'del'){ //删除
+            layer.confirm('真的删除行么', function(index){
+                obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                layer.close(index);
+                //向服务端发送删除指令
+            });
+        } else if(layEvent === 'edit'){ //编辑
+            //do something
+
+            //同步更新缓存对应的值
+            obj.update({
+                username: '123'
+                ,title: 'xxx'
+            });
+        }
     });
 </script>
 

@@ -49,7 +49,7 @@ public class AppuserServiceImpl implements AppuserService {
         return appuserRoleMapperSelf.selectRoleIdByU(appuser.getUserId());
     }
 
-    //分布查询用户
+    //分页查询用户
     public PageInfo<Appuser> getUserListPage(String userName, Integer pageNo, Integer pageSize) {
         pageNo = pageNo == null?1:pageNo;
         pageSize = pageSize == null?10:pageSize;

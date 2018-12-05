@@ -71,6 +71,7 @@ public class LoginController {
                 firstMap.put("icon",menu.getMenuIcon());
                 firstMap.put("href",menu.getMenuUrl());
                 firstMap.put("isParent",menu.getIsParent());
+                firstMap.put("spread",false);
                 List<Appmenu> secondList=appuserService.getMenuListByUser(roleId,menu.getMenuId());
                 if(secondList.size()>0){
                     for (Appmenu secondMenu:secondList ) {
@@ -80,6 +81,7 @@ public class LoginController {
                         secondMap.put("icon",secondMenu.getMenuIcon());
                         secondMap.put("href",secondMenu.getMenuUrl());
                         secondMap.put("isParent",secondMenu.getIsParent());
+                        secondMap.put("spread",false);
                         secondResult.add(secondMap);
                     }
                     firstMap.put("children",secondResult);
