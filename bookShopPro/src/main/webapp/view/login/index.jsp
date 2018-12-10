@@ -11,6 +11,7 @@
     <title>图书商城管理系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/layui/css/layui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/include/Scripts/css/public.css"  media="all">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -101,7 +102,7 @@
                     </dl>
                 </li>
             </ul>
-            <div class="layui-tab-content clildFrame">
+            <div class="layui-tab-content clildFrame magt10">
                 <div class="layui-tab-item layui-show">
                     <iframe src="http://www.baidu.com"></iframe>
                 </div>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     @RequestMapping(value = "/toView")
     public String index(String pindex){
-        return "/admin/"+pindex;
+        return "admin/"+pindex;
     }
     @RequestMapping(value = "/testUser")
     public String indexTest(){

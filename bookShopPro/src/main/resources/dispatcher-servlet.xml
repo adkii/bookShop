@@ -24,4 +24,20 @@
         <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
         <!--配置异常处理器-->
         <bean id="exceptionHandler" class="org.mld.util.ExceptionHandler"/>
+        <!--配置日期解析器-->
+        <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+              <property name="converters">
+                      <list>
+                              <bean class="org.mld.util.CustomerDateConvert"/>
+                              <bean class="org.mld.util.DateToStringConvert"/>
+                      </list>
+              </property>
+        </bean>
+        <!--配置拦截器-->
+        <mvc:interceptors>
+                <mvc:interceptor>
+                        <mvc:mapping path="/**"/>
+                        <bean class="org.mld.intercept.LoginIntercept"/>
+                </mvc:interceptor>
+        </mvc:interceptors>
 </beans>

@@ -4,10 +4,17 @@ import com.github.pagehelper.PageInfo;
 import org.mld.po.Appuser;
 import org.mld.services.AppuserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +23,11 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private AppuserService appuserService;
+    @InitBinder
+    public void initBinder(WebDataBinder binder, WebRequest request) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
     @RequestMapping(value = "/userList")
     @ResponseBody
     public Map<String, Object> userList(String userName,Integer page,Integer pageSize){

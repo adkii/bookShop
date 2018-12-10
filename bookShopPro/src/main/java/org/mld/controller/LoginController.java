@@ -25,13 +25,6 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     private AppuserService appuserService;
-    public String index(HttpSession session){
-        if(session.getAttribute("user")!=null){
-            return "redirect:"+session.getAttribute("requestParentPath");
-        }else{
-            return "redirect:login/login";
-        }
-    }
     @RequestMapping(value = "/login")
     public String login(){
         return "login/login";

@@ -1,5 +1,8 @@
 package org.mld.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Appuser {
@@ -18,7 +21,8 @@ public class Appuser {
     private Date loginTime;
 
     private Integer creatorId;
-
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createTime;
 
     private Boolean isValid;
