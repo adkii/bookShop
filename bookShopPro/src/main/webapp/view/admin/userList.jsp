@@ -34,8 +34,11 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 <script>
-    layui.use('table', function(){
+    layui.use(['table','form','element','layer'], function(){
         var table = layui.table;
+        var $=layui.$;
+        var form=layui.form;
+        var layer=layui.layer;
         table.render({
             elem: '#dataTable'
             ,url:'${pageContext.request.contextPath}/user/userList'
@@ -76,7 +79,15 @@
                 });
             }
         });
-
+        $('#btnAdd').click(function () {
+            layer.open({
+                type: 2,
+                area: ['700px', '450px'],
+                fixed: false, //不固定
+                maxmin: true,
+                content: '${pageContext.request.contextPath}/toView?pindex=editUser'
+            });
+        })
     });
 </script>
 
