@@ -6,7 +6,7 @@ import org.mld.po.Appuserinfo;
 import org.mld.po.AppuserinfoExample;
 
 public interface AppuserinfoMapper {
-    int countByExample(AppuserinfoExample example);
+    long countByExample(AppuserinfoExample example);
 
     int deleteByExample(AppuserinfoExample example);
 
