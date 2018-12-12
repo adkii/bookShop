@@ -5,12 +5,6 @@ import java.util.Date;
 public class Appuserinfo {
     private Integer infoId;
 
-    private String deptType;
-
-    private Integer deptId;
-
-    private String deptName;
-
     private String realName;
 
     private String sex;
@@ -44,31 +38,6 @@ public class Appuserinfo {
     public void setInfoId(Integer infoId) {
         this.infoId = infoId;
     }
-
-    public String getDeptType() {
-        return deptType;
-    }
-
-    public void setDeptType(String deptType) {
-        this.deptType = deptType == null ? null : deptType.trim();
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName == null ? null : deptName.trim();
-    }
-
     public String getRealName() {
         return realName;
     }
