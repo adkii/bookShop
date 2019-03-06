@@ -2,6 +2,7 @@ package org.mld.controller;
 
 import com.github.pagehelper.PageInfo;
 import org.mld.po.Appuser;
+import org.mld.po.Appuserinfo;
 import org.mld.services.AppuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -39,5 +40,15 @@ public class UserController {
         result.put("page",pageInfo.getLastPage());
         result.put("rows",pageInfo.getList());
         return result;
+    }
+    @RequestMapping(value = "/addUser")
+    @ResponseBody
+    public Map<String,Object> addUser(Appuserinfo appuserinfo,Appuser appuser){
+        return appuserService.addUser(appuserinfo,appuser);
+    }
+    @RequestMapping(value = "/getAppuser")
+    @ResponseBody
+    public Appuser getAppuser(Integer id){
+        return appuserService.getUserById(id);
     }
 }
