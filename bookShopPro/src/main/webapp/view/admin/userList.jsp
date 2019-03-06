@@ -24,13 +24,15 @@
         <a class="layui-btn layui-btn-primary " id="btnAdd"><i class="layui-icon"><i class="layui-icon">&#xe654;</i>添加</i></a>
     </div>
 </form>
-<table class="layui-hide" id="dataTable"></table>
+<table class="layui-hide" id="dataTable" lay-filter="demo"></table>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/include/Scripts/Common.js" charset="utf-8"></script>
+
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 <script>
@@ -39,6 +41,7 @@
         var $=layui.$;
         var form=layui.form;
         var layer=layui.layer;
+        var $=layui.$;
         table.render({
             elem: '#dataTable'
             ,url:'${pageContext.request.contextPath}/user/userList'
@@ -57,7 +60,7 @@
             }
         });
         //监听工具条
-        table.on('tool(barDemo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        table.on('tool(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             var tr = obj.tr; //获得当前行 tr 的DOM对象
@@ -71,22 +74,11 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
-
-                //同步更新缓存对应的值
-                obj.update({
-                    username: '123'
-                    ,title: 'xxx'
-                });
+                openWin('${pageContext.request.contextPath}/admin/toView?pindex=editUser&id='+data.userId,'编辑用户信息','700','300');
             }
         });
         $('#btnAdd').click(function () {
-            layer.open({
-                type: 2,
-                area: ['700px', '450px'],
-                fixed: false, //不固定
-                maxmin: true,
-                content: '${pageContext.request.contextPath}/toView?pindex=editUser'
-            });
+            openWin('${pageContext.request.contextPath}/admin/toView?pindex=editUser','新增用户信息','700','300');
         })
     });
 </script>

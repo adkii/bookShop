@@ -42,10 +42,18 @@
     <!--[if lt IE 9]>
     <script src="${pageContext.request.contextPath}/include/login/js/respond.min.js"></script>
     <![endif]-->
-
+    <%--<style type="text/css">--%>
+        <%--.style-2{--%>
+            <%--background-color: #ffffff;--%>
+            <%--background-size: cover;--%>
+            <%--background-position: -30% center;--%>
+            <%--background-repeat: no-repeat;--%>
+            <%--background-image: url(${pageContext.request.contextPath}/include/login/images/bg_2.jpg);--%>
+            <%--height: 100%;--%>
+        <%--}--%>
+    <%--</style>--%>
 </head>
 <body class="style-2">
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
@@ -98,11 +106,6 @@
 <script src="${pageContext.request.contextPath}/include/login/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js" type="text/javascript"/>
 <script type="text/javascript">
-    $(function () {
-      if('${msg}'!='null' && '${msg}'!=''){
-          alert(msg);
-      }
-    })
 </script>
 </body>
 </html>

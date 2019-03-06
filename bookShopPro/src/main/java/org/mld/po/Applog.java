@@ -1,5 +1,8 @@
 package org.mld.po;
 
+
+import lombok.Getter;
+
 import java.util.Date;
 
 public class Applog {

@@ -42,7 +42,7 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/logout">退了</a></li>
         </ul>
     </div>
     <!-- 左侧导航 -->
@@ -104,7 +104,7 @@
             </ul>
             <div class="layui-tab-content clildFrame magt10">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="http://www.baidu.com"></iframe>
+                    <iframe src="/admin/toView?pindex=userList"></iframe>
                 </div>
             </div>
         </div>

@@ -3,8 +3,10 @@ package org.mld.services;
 import com.github.pagehelper.PageInfo;
 import org.mld.po.Appmenu;
 import org.mld.po.Appuser;
+import org.mld.po.Appuserinfo;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface AppuserService {
@@ -16,4 +18,8 @@ public interface AppuserService {
      Integer getRole(Appuser appuser);
      //获取分页列表
      PageInfo<Appuser> getUserListPage(String userName,Integer pageNo,Integer pageSize);
+     //添加用户
+     Map<String,Object> addUser(Appuserinfo appuserinfo,Appuser appuser);
+     //获取用户
+     Appuser getUserById(int id);
 }

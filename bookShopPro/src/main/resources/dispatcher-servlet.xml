@@ -24,6 +24,22 @@
         <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
         <!--配置异常处理器-->
         <bean id="exceptionHandler" class="org.mld.util.ExceptionHandler"/>
+        <!--配置拦截器-->
+        <mvc:interceptors>
+            <mvc:interceptor>
+                <mvc:mapping path="/**"/>
+                <mvc:exclude-mapping path="/login"/>
+                <mvc:exclude-mapping path="/logout"/>
+                <mvc:exclude-mapping path="/checkLogin"/>
+                <!--<mvc:exclude-mapping path="*.jsp"/>-->
+                <!--<mvc:exclude-mapping path="*.html"/>-->
+                <!--<mvc:exclude-mapping path="*.css"/>-->
+                <!--<mvc:exclude-mapping path="*.js"/>-->
+                <!--<mvc:exclude-mapping path="*.jpg"/>-->
+                <bean class="org.mld.intercept.LoginIntercept"/>
+            </mvc:interceptor>
+        </mvc:interceptors>
+    <!--<mvc:resources mapping="/include/**" location="/include/"/>-->
         <!--配置日期解析器-->
         <bean id="formattingConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
               <property name="converters">
@@ -33,11 +49,4 @@
                       </list>
               </property>
         </bean>
-        <!--配置拦截器-->
-        <mvc:interceptors>
-                <mvc:interceptor>
-                        <mvc:mapping path="/**"/>
-                        <bean class="org.mld.intercept.LoginIntercept"/>
-                </mvc:interceptor>
-        </mvc:interceptors>
 </beans>

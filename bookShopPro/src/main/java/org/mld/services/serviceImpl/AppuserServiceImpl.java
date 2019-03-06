@@ -7,8 +7,11 @@ import org.mld.po.*;
 import org.mld.services.AppuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AppuserServiceImpl implements AppuserService {
@@ -24,6 +27,8 @@ public class AppuserServiceImpl implements AppuserService {
     private AppmenuMapper appmenuMapper;
     @Autowired
     private ApproleMenuMapperSelf approleMenuMapperSelf;
+    @Autowired
+    private AppuserinfoMapper appuserinfoMapper;
     public Appuser checkLogin(String loginName,String password) {
         Appuser appuser=appuserMapperSelf.findUserByName(loginName);
         if(appuser!=null){
@@ -58,5 +63,19 @@ public class AppuserServiceImpl implements AppuserService {
         //用PageInfo对结果进行包装
         PageInfo<Appuser> page = new PageInfo<Appuser>(list);
         return page;
+    }
+    @Transactional
+    public Map<String, Object> addUser(Appuserinfo appuserinfo, Appuser appuser) {
+        appuserinfoMapper.insert(appuserinfo);
+        appuser.setInfoId(appuserinfo.getInfoId());
+        appuserMapper.insert(appuser);
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("code",1);
+        result.put("msg","sucess");
+        return result;
+    }
+
+    public Appuser getUserById(int id) {
+        return appuserMapper.selectByPrimaryKey(id);
     }
 }

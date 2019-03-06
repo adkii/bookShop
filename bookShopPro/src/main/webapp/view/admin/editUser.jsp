@@ -32,41 +32,43 @@
          <tr>
              <td>
                  <label class="layui-form-label">姓名</label>
-                 <input type="text" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
+                 <input type="text" name="userName" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
              </td>
              <td>
                  <label class="layui-form-label">性别</label>
-                 <input type="text" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
+                 <input type="text"  class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="性别"/>
              </td>
          </tr>
          <tr>
              <td>
                  <label class="layui-form-label">出生日期</label>
-                 <input type="text" class="layui-input-inline" id="txtBirthday" name="birthday" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
+                 <input type="text" class="layui-input-inline" id="txtBirthday" name="birthday" autocomplete="off" required lay-verify="required" placeholder="出生日期"/>
              </td>
              <td>
                  <label class="layui-form-label">联系方式</label>
-                 <input type="text" class="layui-input-inline" autocomplete="off" required lay-verify="phone|required" placeholder="姓名"/>
+                 <input type="text"  class="layui-input-inline" autocomplete="off" required lay-verify="phone|required" placeholder="联系方式"/>
              </td>
          </tr>
          <tr>
              <td>
                  <label class="layui-form-label">登录名</label>
-                 <input type="text" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
+                 <input type="text" name="loginName" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="登录名"/>
              </td>
              <td>
                  <label class="layui-form-label">密码</label>
-                 <input type="text" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="姓名"/>
+                 <input type="text" name="password" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="密码"/>
              </td>
          </tr>
      </table>
     <div class="layui-row" style="text-align: center">
-        <button type="button" class="layui-btn" id="btnSave"><i class="layui-icon layui-icon-ok">保存</i> </button>
+        <button type="button" class="layui-btn" id="btnSave" lay-submit="" lay-filter="btnSave"><i class="layui-icon layui-icon-ok">保存</i> </button>
         <button type="button" class="layui-btn" id="btnClose"><i class="layui-icon layui-icon-close">返回</i> </button>
     </div>
 </form>
 </body>
 <script src="${pageContext.request.contextPath}/include/Scripts/layui/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/include/Scripts/Common.js" charset="utf-8"></script>
+
 <script type="text/javascript">
     layui.use(['form','element','layer','laydate'], function(){
         var $=layui.$;
@@ -77,13 +79,24 @@
         laydate.render({
             elem: '#txtBirthday' //指定元素
         });
-        $('#btnClose').click(function () {
-            parent.layer.close(index);
-        })
-        $('#btnSave').click(function () {
-            if(form.validate()){
-
-            }
+        if('${param.id}'!=''){
+            loadInfo();
+        }
+        function loadInfo(){
+            ajaxPost('${pageContext.request.contextPath}/user/getAppuser?id=${param.id}',{},function (d) {
+                formAssign(d);
+            })
+        }
+        form.on('click(btnSave)',function () {
+            formPost('${pageContext.request.contextPath}/user/addUser',function (d) {
+                if(d.code){
+                    layer.msg("保存成功",500,function () {
+                        closeLayerWindow();
+                    })
+                }else{
+                    layer.alert(d.msg);
+                }
+            })
         })
     })
 </script>
