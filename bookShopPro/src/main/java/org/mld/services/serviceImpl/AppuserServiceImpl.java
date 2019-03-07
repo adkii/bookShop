@@ -78,4 +78,11 @@ public class AppuserServiceImpl implements AppuserService {
     public Appuser getUserById(int id) {
         return appuserMapper.selectByPrimaryKey(id);
     }
+
+    public Appuser getBaseInfo(int id) {
+        return appuserMapperSelf.getBaseInfo(id);
+    }
+    public Map<String,Object> getBaseInfo2(int id) {
+        return appuserMapperSelf.getBaseInfo2(id);
+    }
 }

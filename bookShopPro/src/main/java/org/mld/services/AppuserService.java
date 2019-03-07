@@ -22,4 +22,8 @@ public interface AppuserService {
      Map<String,Object> addUser(Appuserinfo appuserinfo,Appuser appuser);
      //获取用户
      Appuser getUserById(int id);
+     //获取用户基本信息及登录信息(以对象方式)
+     Appuser getBaseInfo(int id);
+     //以Map方式获取用户基本信息及登录信息
+     Map<String,Object> getBaseInfo2(int id);
 }

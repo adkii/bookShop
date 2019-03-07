@@ -28,6 +28,7 @@
 <body>
 <form id="webform" class="layui-form layui-form-pane" method="post">
     <input type="hidden" id="txtId" name="userId" value="${param.id}" />
+    <input type="hidden"  name="infoId" value="" />
      <table class="layui-table">
          <tr>
              <td>
@@ -36,7 +37,7 @@
              </td>
              <td>
                  <label class="layui-form-label">性别</label>
-                 <input type="text"  class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="性别"/>
+                 <input type="text" name="sex" class="layui-input-inline" autocomplete="off" required lay-verify="required" placeholder="性别"/>
              </td>
          </tr>
          <tr>
@@ -83,7 +84,7 @@
             loadInfo();
         }
         function loadInfo(){
-            ajaxPost('${pageContext.request.contextPath}/user/getAppuser?id=${param.id}',{},function (d) {
+            ajaxPost('${pageContext.request.contextPath}/user/getBaseInfo2?id=${param.id}',{},function (d) {
                 formAssign(d);
             })
         }

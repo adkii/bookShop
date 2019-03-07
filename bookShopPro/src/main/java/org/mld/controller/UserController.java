@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -51,4 +52,10 @@ public class UserController {
     public Appuser getAppuser(Integer id){
         return appuserService.getUserById(id);
     }
+    @RequestMapping(value = "/getBaseInfo")
+    @ResponseBody
+    public Appuser getBaseInfo(Integer id){return appuserService.getBaseInfo(id);}
+    @RequestMapping(value = "/getBaseInfo2")
+    @ResponseBody
+    public Map<String,Object> getBaseInfo2(Integer id){return appuserService.getBaseInfo2(id);}
 }

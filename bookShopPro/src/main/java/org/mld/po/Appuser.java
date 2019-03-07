@@ -21,6 +21,16 @@ public class Appuser {
     private Date loginTime;
 
     private Integer creatorId;
+    private Appuserinfo appuserInfo;
+
+    public Appuserinfo getAppuserInfo() {
+        return appuserInfo;
+    }
+
+    public void setAppuserInfo(Appuserinfo appuserInfo) {
+        this.appuserInfo = appuserInfo;
+    }
+
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createTime;

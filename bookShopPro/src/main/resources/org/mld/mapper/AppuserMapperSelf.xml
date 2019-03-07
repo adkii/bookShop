@@ -13,6 +13,26 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="is_valid" property="isValid" jdbcType="BIT" />
   </resultMap>
+  <resultMap id="BaseInfoMap" type="org.mld.po.Appuser">
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <association property="appuserInfo" javaType="org.mld.po.Appuserinfo">
+      <id column="info_id" jdbcType="INTEGER" property="infoId" />
+      <result column="sex" jdbcType="CHAR" property="sex" />
+      <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    </association>
+  </resultMap>
+  <resultMap id="BaseInfoMap2" type="java.util.Map">
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+      <result column="info_id" jdbcType="INTEGER" property="infoId" />
+      <result column="sex" jdbcType="CHAR" property="sex" />
+      <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -89,5 +109,13 @@
     <if test="userName!=null and userName!=''">
       and user_name like #{useName}
     </if>
+  </select>
+  <select id="getBaseInfo" parameterType="java.lang.Integer" resultMap="BaseInfoMap">
+    select a.user_id,a.user_name,a.login_name,a.password,b.info_id,b.sex,b.birthday
+    from appuser a left join appuserinfo b on a.info_id=b.info_id where a.user_id=#{id}
+  </select>
+  <select id="getBaseInfo2" parameterType="java.lang.Integer" resultMap="BaseInfoMap2">
+    select a.user_id,a.user_name,a.login_name,a.password,b.info_id,b.sex,b.birthday
+    from appuser a left join appuserinfo b on a.info_id=b.info_id where a.user_id=#{id}
   </select>
 </mapper>
